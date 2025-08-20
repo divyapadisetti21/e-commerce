@@ -15,39 +15,27 @@ const RegisterScreen = () => {
 
   const { search } = useLocation();
   const navigate = useNavigate();
-  const redirectInUrl = new URLSearchParams(search).get('redirect');
-  const redirect = redirectInUrl ? redirectInUrl : '/';
+  const redirect = new URLSearchParams(search).get('redirect') || '/';
 
   const { state, dispatch } = useContext(CartContext);
   const { userInfo } = state;
 
   useEffect(() => {
-    if (userInfo) {
-      navigate(redirect);
-    }
+    if (userInfo) navigate(redirect);
   }, [navigate, redirect, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    setError('');
-    setMessage('');
-    if (password !== confirmPassword) {
-      setMessage('Passwords do not match');
-    } else {
+    setError(''); setMessage('');
+    if (password !== confirmPassword) setMessage('Passwords do not match');
+    else {
       try {
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_API_BASE_URL}/api/users`,
-          { name, email, password }
-        );
+        const { data } = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/users`, { name, email, password });
         dispatch({ type: 'USER_LOGIN', payload: data });
         localStorage.setItem('userInfo', JSON.stringify(data));
         navigate(redirect);
       } catch (err) {
-        setError(
-          err.response && err.response.data.message
-            ? err.response.data.message
-            : err.message
-        );
+        setError(err.response?.data?.message || err.message);
       }
     }
   };
@@ -61,50 +49,25 @@ const RegisterScreen = () => {
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name" className="my-3">
             <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
+            <Form.Control type="text" placeholder="Enter name" value={name} onChange={e => setName(e.target.value)} />
           </Form.Group>
           <Form.Group controlId="email" className="my-3">
             <Form.Label>Email Address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
+            <Form.Control type="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} />
           </Form.Group>
-          <Form.Group controlId="password">
+          <Form.Group controlId="password" className="my-3">
             <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
+            <Form.Control type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)} />
           </Form.Group>
           <Form.Group controlId="confirmPassword" className="my-3">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Confirm password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            ></Form.Control>
+            <Form.Control type="password" placeholder="Confirm password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
           </Form.Group>
-          <Button type="submit" variant="primary" className="mt-3">
-            Register
-          </Button>
+          <Button type="submit" variant="primary" className="mt-3">Register</Button>
         </Form>
         <Row className="py-3">
           <Col>
-            Have an Account?{' '}
-            <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-              Login
-            </Link>
+            Have an Account? <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link>
           </Col>
         </Row>
       </Col>
