@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import axios from 'axios';
-import './HomeScreen.css';
+import Product from '../components/Product';
 
 const HomeScreen = () => {
   const [products, setProducts] = useState([]);
@@ -10,13 +10,12 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/products`
-        );
-        setProducts(data);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/products`);
+        setProducts(Array.isArray(data) ? data : []);
         setLoading(false);
       } catch (err) {
         console.error(err);
+        setProducts([]);
         setLoading(false);
       }
     };
@@ -25,7 +24,6 @@ const HomeScreen = () => {
 
   return (
     <>
-      {/* Hero Section */}
       <Container className="my-5">
         <Row className="align-items-center">
           <Col md={6}>
@@ -45,7 +43,6 @@ const HomeScreen = () => {
         </Row>
       </Container>
 
-      {/* Product Grid */}
       <Container className="mt-5">
         <h2 className="mb-4 text-center">LATEST COLLECTIONS</h2>
         <Row>
@@ -56,31 +53,7 @@ const HomeScreen = () => {
           ) : (
             products.map((product) => (
               <Col key={product._id} sm={6} md={4} lg={3} className="mb-4">
-                <Card className="h-100 shadow-sm">
-                  <div className="image-wrapper">
-                    <Card.Img
-                      variant="top"
-                      src={
-                        product.image.startsWith('http')
-                          ? product.image
-                          : `${process.env.REACT_APP_API_BASE_URL}${product.image}`
-                      }
-                      alt={product.name}
-                      className="product-img hover-zoom"
-                    />
-                  </div>
-                  <Card.Body className="d-flex flex-column">
-                    <Card.Title>{product.name}</Card.Title>
-                    <Card.Text>₹{product.price.toFixed(2)}</Card.Text>
-                    <Button
-                      href={`/product/${product._id}`}
-                      variant="primary"
-                      className="mt-auto"
-                    >
-                      View Details
-                    </Button>
-                  </Card.Body>
-                </Card>
+                <Product product={product} />
               </Col>
             ))
           )}
