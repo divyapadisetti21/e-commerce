@@ -1,0 +1,189 @@
+
+/* --- NEW HEADER / NAVBAR --- */
+.header-container {
+  border-bottom: 1px solid #eaeaea;
+}
+.header-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem !important;
+  letter-spacing: 2px;
+}
+.logo-dot {
+  color: #d4a7b4; /* Light pink dot */
+}
+.nav-link-item {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 0 1rem;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 5px;
+}
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transition: width 0.3s ease-in-out;
+}
+.nav-link-item:hover::after,
+.nav-link-item.active::after {
+  width: 100%;
+}
+.nav-icon {
+  font-size: 1.2rem;
+  margin: 0 0.8rem;
+  color: #333;
+}
+.cart-badge-new {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.admin-panel-btn {
+  border-radius: 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+/* --- NEW HERO SECTION --- */
+.hero-section {
+  background-color: #fff;
+}
+.hero-text-section {
+  padding-left: 3rem;
+}
+.hero-subheading {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+}
+.hero-heading {
+  font-family: 'Lora', serif;
+  font-size: 5rem;
+  font-weight: 400;
+  margin: 1rem 0;
+}
+.shop-now-link {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #000;
+  display: inline-block;
+  margin-top: 1rem;
+}
+.shop-now-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  margin-top: 5px;
+}
+.hero-image-section {
+  background-color: #fceef0; /* Light pink background */
+  padding: 0;
+}
+
+/* --- NEW PRODUCT CARD & IMAGE FADE-IN EFFECT --- */
+.product-card-new {
+  border: none;
+  background-color: #f9f9f9;
+}
+.product-image-container {
+  background-color: #f0f0f0; /* Placeholder color */
+  width: 100%;
+  aspect-ratio: 3 / 4; /* Makes images a consistent tall shape */
+}
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Prevents image stretching */
+  opacity: 0; /* Start invisible */
+  transition: opacity 0.7s ease-in-out;
+}
+.product-image.loaded {
+  opacity: 1; /* Fade in when loaded */
+}
+.product-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #333;
+  margin-top: 0.5rem;
+}
+.product-price {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+
+/* --- NEW STYLES FOR COLLECTION PAGE --- */
+.filters-sidebar h4, .filters-sidebar h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.filters-sidebar .form-check-label {
+  font-size: 0.9rem;
+}
+.collections-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #333;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+
+/* Features Section */
+.feature-item h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+/* Footer Section */
+.footer-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem !important;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+.footer-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.footer-links .nav-link,
+.footer-links li {
+  color: #6c757d;
+  padding-bottom: 0.5rem !important;
+  font-size: 0.9rem;
+}
+.footer-links .nav-link:hover {
+  color: #000;
+}
+footer h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+

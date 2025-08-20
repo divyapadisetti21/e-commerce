@@ -1,0 +1,87 @@
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Paste the full CSS from the previous correct response here. It contains all the styles for the polished UI, header, hero banner, product cards, and fade-in effect. */
+:root { --font-primary: 'Lora', serif; --font-secondary: 'Montserrat', sans-serif; --color-text: #333; --color-primary: #f8c0c8; --color-dark: #000; --color-light: #fff; --color-grey: #f4f4f4; }
+body { margin: 0; font-family: var(--font-secondary); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: var(--color-text); background-color: var(--color-light); }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-primary); }
+main { min-height: 80vh; }
+/* ... and so on for the rest of the CSS */
+/* src/App.css */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  margin-top: 30px;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.card img {
+  height: 200px;
+  object-fit: contain;
+}
+
+.product-img {
+  transition: transform 0.3s ease-in-out;
+}
+.product-img:hover {
+  transform: scale(1.05);
+}
+
+.image-wrapper {
+  height: 220px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
