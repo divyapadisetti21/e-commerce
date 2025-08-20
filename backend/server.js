@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:3000',               // local React
-      'https://your-frontend.vercel.app'     // replace with your Vercel URL
+      'https://e-commerce-one-lemon-70.vercel.app/'     // replace with your Vercel URL
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
